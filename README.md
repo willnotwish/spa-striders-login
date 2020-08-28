@@ -7,7 +7,7 @@ user record. If it finds one, it authenticates that user by setting its database
 
 ## Testing
 
-To test it out with the Bookings app, deploy the latter (also a Rails app) to the subdirectory /bookings-test by setting the environment variable RAILS_RELATIVE_URL_ROOT, according to the instructions here:
+To test it out with the Bookings app, deploy the latter (also a Rails app) to the subdirectory ```/bookings-test``` by setting the environment variable RAILS_RELATIVE_URL_ROOT, according to the instructions here:
 
 https://edgeguides.rubyonrails.org/configuring.html#deploy-to-a-subdirectory-relative-url-root
 
@@ -21,9 +21,11 @@ Visit http://localhost:2000/login and log in as that admin by entering the appro
 
 Then, in the same browser session, visit http://localhost:2000/bookings-test/admin
 
-If it's working, you should see the expected admin page, showing the correct admin user.
+You should see the expected admin page, showing the correct admin user.
 
-Fo this to work, the same session cookie exist in both apps. Use this to troubleshoot if necessary.
+## How it works
+
+The same session cookie must exist in both apps. For the browser not to know the difference, a reverse proxy (nginx) is used to route traffic to the correct application based on the path requested. Check cookies to troubleshoot if necessary.
 
 
 
